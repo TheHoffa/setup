@@ -5,11 +5,14 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 ORANGE='\033[0;33m'
 NC='\033[0m'
+
 # Get the current user's home directory
 HOME_DIR=$(eval echo ~${SUDO_USER})
+
 # Define the path to the Desktop and the Tools folder
 DESKTOP_DIR="$HOME_DIR/Desktop"
 TOOLS_DIR="$DESKTOP_DIR/Tools"
+
 # Define the paths for the subdirectories
 LINUX_DIR="$TOOLS_DIR/Linux"
 WINDOWS_DIR="$TOOLS_DIR/Windows"
@@ -60,6 +63,7 @@ esac
 echo ""
 echo "${ORANGE}[*]${NC}Please enter your ${RED}password${NC} to authenticate for sudo rights during instalation:"
 sudo -v
+
 # Check if sudo access is successful
 if [ $? -eq 0 ]; then
     echo "${ORANGE}[*]${NC}Authentication ${GREEN}successful${NC}. Proceeding with the setup..."
@@ -77,18 +81,18 @@ echo "##############ALIASES#############" >> "$ZSHRC_FILE"
 echo "alias pyserv='ls; python -m http.server 80'" >> "$ZSHRC_FILE"
 echo "alias smbserv='sudo impacket-smbserver'" >> "$ZSHRC_FILE"
 echo "alias load='sudo xdg-open'" >> "$ZSHRC_FILE"
-echo "alias multi='sudo msfconsole -qx '\''use multi/handler; set PAYLOAD generic/shell_reverse_tcp; set LHOST 1.1.1.1; set LPORT 5555 '\'''" >> "$ZSHRC_FILE"
+echo "alias multi='sudo msfconsole -qx '\''use multi/handler; set PAYLOAD generic/shell_reverse_tcp; set LHOST 1.1.1.1; set LPORT 5555'\'''" >> "$ZSHRC_FILE"
 echo "alias revshells='firefox https://www.revshells.com/ &'" >> "$ZSHRC_FILE"
-echo "alias psrevshell='python /home/kali/Desktop/Tools/Windows/Powershell-Base64-Reverse-Shell-Generator/PowerShellReverseShellGen.py'" >> $ZSHRC_FILE"
+echo "alias psrevshell='python /home/kali/Desktop/Tools/Windows/Powershell-Base64-Reverse-Shell-Generator/PowerShellReverseShellGen.py'" >> "$ZSHRC_FILE"
 
 echo ""
 echo "${ORANGE}[*]${NC}The following ${GREEN}aliases${NC} are added to ${GREEN}$ZSHRC_FILE:"
-echo "${ORANGE}[*]${GREEN}pyserv ${NC}(starts a python server on port 80)"
-echo "${ORANGE}[*]${GREEN}smbserv ${NC}(starts impacket-smbserver)"
-echo "${ORANGE}[*]${GREEN}load ${NC}(xdg-open)"
-echo "${ORANGE}[*]${GREEN}multi ${NC}(starts msf multi/handler)"
-echo "${ORANGE}[*]${GREEN}revshells ${NC}(starts firefox and navigates to revshells.com)"
-echo "${ORANGE}[*]${GREEN}psrevshell ${NC}(Generates a base64 encoded PowerShell reverse shell"
+echo "${ORANGE}[*]${GREEN}pyserv${NC} (starts a python server on port 80)"
+echo "${ORANGE}[*]${GREEN}smbserv${NC} (starts impacket-smbserver)"
+echo "${ORANGE}[*]${GREEN}load${NC} (xdg-open)"
+echo "${ORANGE}[*]${GREEN}multi${NC} (starts msf multi/handler)"
+echo "${ORANGE}[*]${GREEN}revshells${NC} (starts firefox and navigates to revshells.com)"
+echo "${ORANGE}[*]${GREEN}psrevshell${NC} (Generates a base64 encoded PowerShell reverse shell)"
 
 echo ""
 # Update the system
@@ -186,7 +190,7 @@ GOOS=windows go build -o agent.exe cmd/agent/main.go >/dev/null 2>&1
 echo "${ORANGE}[*]${NC}Built ligolo-ng agent.exe"
 echo "${ORANGE}[*]${NC}Building ligolo-ng proxy.exe"
 GOOS=windows go build -o proxy.exe cmd/proxy/main.go >/dev/null 2>&1
-echo "${ORANGE}[*]${NC}Built ligolo-ng agent.exe"
+echo "${ORANGE}[*]${NC}Built ligolo-ng proxy.exe"
 echo "${ORANGE}[*]${NC}Ligolo-ng build completed successfully."
 echo ""
 cd "$DESKTOP_DIR"
@@ -219,4 +223,3 @@ read choice
 # Execute commands after countdown
 echo "${ORANGE}[*]${NC} Executing ${ORANGE}'exec zsh'${NC} command..."
 exec zsh
-
