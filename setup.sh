@@ -30,7 +30,7 @@ if [ -f "/etc/os-release" ]; then
         echo "${ORANGE}[*]${NC}Running Kali Linux ${GREEN}2024.2"
     else
         echo "${ORANGE}[*]${RED}ERROR${NC}: Wrong version of Kali!"
-        echo "${ORANGE}[*]${NC}Do you want to continue anyway? (${GREEN}yes${NC}/${RED}no${NC}):"
+        echo -n "${ORANGE}[*]${NC}Do you want to continue anyway? (${GREEN}yes${NC}/${RED}no${NC}): "
         read choice
         case "$choice" in
             yes|YES|y|Y ) echo "Continuing with the script...";;
