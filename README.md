@@ -10,6 +10,5 @@ make it executeable
 run the setup
 `./setup.sh`
 
-
-![afbeelding](https://github.com/TheHoffa/setup/assets/136639877/85659fee-6b7d-429d-92c7-7e5be5e4e59b)
+![afbeelding](https://github.com/TheHoffa/setup/assets/136639877/b162d3a3-b4c5-476d-9236-cc32655176ae)
 
