@@ -29,7 +29,7 @@ if [ -f "/etc/os-release" ]; then
     if [[ "$VERSION" == "2024.2" ]]; then
         echo "${ORANGE}[*]${NC}Running Kali Linux ${GREEN}2024.2"
     else
-        echo "${ORANGE}[*]${NC}Please make sure you are using the latest version of Kali: ${RED}kali-linux-2042.2""
+        echo "${ORANGE}[*]${NC}Please make sure you are using the latest version of Kali: ${RED}kali-linux-2042.2"
         exit 1
     fi
 else
