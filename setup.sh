@@ -29,8 +29,13 @@ if [ -f "/etc/os-release" ]; then
     if [[ "$VERSION" == "2024.2" ]]; then
         echo "${ORANGE}[*]${NC}Running Kali Linux ${GREEN}2024.2"
     else
-        echo "${ORANGE}[*]${NC}Please make sure you are using the latest version of Kali: ${RED}kali-linux-2042.2"
-        exit 1
+        echo "${ORANGE}[*]${RED}ERROR${NC}: Wrong version of Kali!"
+        echo "${ORANGE}[*]${NC}Do you want to continue anyway? (${GREEN}yes${NC}/${RED}no${NC}):"
+        read choice
+        case "$choice" in
+            yes|YES|y|Y ) echo "Continuing with the script...";;
+            * ) echo "Exiting script."; exit 1;;
+        esac
     fi
 else
     echo "${RED}File /etc/os-release not found. This script is intended for Kali Linux."
@@ -74,7 +79,7 @@ echo "alias load='sudo xdg-open'" >> "$ZSHRC_FILE"
 echo "alias multi='sudo msfconsole -qx '\''use multi/handler; set PAYLOAD generic/shell_reverse_tcp; set LHOST 1.1.1.1; set LPORT 5555 '\'''" >> "$ZSHRC_FILE"
 echo ""
 echo "${ORANGE}[*]${NC}The following ${GREEN}aliases${NC} are added to ${GREEN}$ZSHRC_FILE:"
-echo "${ORANGE}[*]${GREEN}pyserv ${NC}(starts a python server on port 80"
+echo "${ORANGE}[*]${GREEN}pyserv ${NC}(starts a python server on port 80)"
 echo "${ORANGE}[*]${GREEN}smbserv ${NC}(starts impacket-smbserver)"
 echo "${ORANGE}[*]${GREEN}load ${NC}(xdg-open)"
 echo "${ORANGE}[*]${GREEN}multi ${NC}(starts msf multi/handler)"
