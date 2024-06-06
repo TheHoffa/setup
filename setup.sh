@@ -21,7 +21,24 @@ if [ -d "$TOOLS_DIR" ] || [ -d "$DESKTOP_DIR/Stand-Alone-1" ] || [ -d "$DESKTOP_
     exit 1
 fi
 
-echo "${ORANGE}[*]${NC}Please make sure you are using the latest version of Kali: ${RED}kali-linux-2042.2"
+# Check if the file /etc/os-release exists
+if [ -f "/etc/os-release" ]; then
+    # Source the file to get the variables
+    . /etc/os-release
+    # Check if the variable VERSION contains "2024.2"
+    if [[ "$VERSION" == "2024.2" ]]; then
+        echo "${ORANGE}[*]${NC}Running Kali Linux ${GREEN}2024.2"
+    else
+        echo "${ORANGE}[*]${NC}Please make sure you are using the latest version of Kali: ${RED}kali-linux-2042.2""
+        exit 1
+    fi
+else
+    echo "${RED}File /etc/os-release not found. This script is intended for Kali Linux."
+    exit 1
+fi
+
+
+
 echo "${ORANGE}[*]${NC}This script will create some folders on your ${ORANGE}desktop${NC}, install some ${ORANGE}tools${NC} on your ${ORANGE}system ${NC}and add some ${ORANGE}aliases${NC} to your ${ORANGE}.zshrc ${NC}file."
 
 # Prompt the user for continuation
