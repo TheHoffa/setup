@@ -78,7 +78,7 @@ ZSHRC_FILE="$HOME_DIR/.zshrc"
 # Append aliases to the .zshrc file
 echo "" >> "$ZSHRC_FILE"
 echo "##############ALIASES#############" >> "$ZSHRC_FILE"
-echo "alias pyserv='ls; python -m http.server 80'" >> "$ZSHRC_FILE"
+echo "alias pyserv='ifconfig; ls; python -m http.server 80'" >> "$ZSHRC_FILE"
 echo "alias smbserv='sudo impacket-smbserver'" >> "$ZSHRC_FILE"
 echo "alias load='sudo xdg-open'" >> "$ZSHRC_FILE"
 echo "alias multi='sudo msfconsole -qx '\''use multi/handler; set PAYLOAD generic/shell_reverse_tcp; set LHOST 1.1.1.1; set LPORT 5555'\'''" >> "$ZSHRC_FILE"
@@ -102,7 +102,7 @@ echo "${ORANGE}[${NC}*${ORANGE}]${NC}Running ${GREEN}apt upgrade"
 sudo apt upgrade -y -qq > /dev/null 2>&1
 echo "${ORANGE}[${NC}*${ORANGE}]${NC}Installing dependencies"
 echo "${ORANGE}[${NC}*${ORANGE}]${NC}This may take some time..."
-sudo apt install golang-go enum4linux-ng autorecon seclists curl dnsrecon enum4linux feroxbuster gobuster impacket-scripts nbtscan nikto nmap onesixtyone oscanner redis-tools smbclient smbmap snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf -y -qq > /dev/null 2>&1
+sudo apt install golang-go enum4linux-ng seclists curl dnsrecon enum4linux feroxbuster gobuster impacket-scripts nbtscan nikto nmap onesixtyone oscanner redis-tools smbclient smbmap snmp sslscan sipvicious tnscmd10g whatweb wkhtmltopdf -y -qq > /dev/null 2>&1
 echo ""
 # Check if the Desktop directory exists
 if [ ! -d "$DESKTOP_DIR" ]; then
